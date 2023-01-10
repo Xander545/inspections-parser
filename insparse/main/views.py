@@ -1,5 +1,15 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import JsonResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the main index.")
+    context = {'test': 'test123'}
+    return render(request, 'index.html', context)
+
+def detail(request, insp_id):
+    return JsonResponse(
+        {
+            'insp_id': insp_id,
+            'details': 'Test detail',
+        }
+    )
